@@ -13,10 +13,13 @@ export const toRna = (DNAstrand) => {
   let RNAstrand = '';
   if (DNAstrand.length === 0) return RNAstrand;
   for (let nucleotide of DNAstrand) {
-    if (nucleotide === "G") RNAstrand += "C";
-    if (nucleotide === "C") RNAstrand += "G";
-    if (nucleotide === "T") RNAstrand += "A";
-    if (nucleotide === "A") RNAstrand += "U";
+    RNAstrand += TRANSCRIPTION.get(nucleotide);
   }
   return RNAstrand;
 };
+
+let TRANSCRIPTION = new Map();
+TRANSCRIPTION.set("G", "C");
+TRANSCRIPTION.set("C", "G");
+TRANSCRIPTION.set("T", "A");
+TRANSCRIPTION.set("A", "U");
