@@ -1,8 +1,15 @@
-//
-// This is only a SKELETON file for the 'Prime Factors' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
-export const primeFactors = () => {
-  throw new Error("Remove this statement and implement this function");
+export const primeFactors = (number) => {
+  let primeFactors = [];
+  return GetPrimes(number);
 };
+
+function GetPrimes(number, primes = []) {
+  if (number === 1) return primes;
+  for (let i = 2; i <= number; i++) {
+    if (number % i === 0) {
+      number = number / i;
+      primes.push(i);
+      return GetPrimes(number, primes);
+    }
+  }
+}
